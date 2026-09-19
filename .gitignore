@@ -1,0 +1,23 @@
+# Entornos y caches de Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.pytest_cache/
+
+# Configuracion local
+.env
+.vscode/
+
+# Datos y resultados generados: conservar solo los archivos .gitkeep
+/data/raw/*
+!/data/raw/.gitkeep
+/data/processed/*
+!/data/processed/.gitkeep
+/output/*
+!/output/.gitkeep
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
