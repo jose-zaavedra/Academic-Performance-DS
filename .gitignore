@@ -10,13 +10,16 @@ __pycache__/
 .env
 .vscode/
 
-# Datos y resultados generados: conservar solo los archivos .gitkeep
+# Ignorar datos y resultados generados, excepto archivos CSV y .gitkeep
 /data/raw/*
 !/data/raw/.gitkeep
+!/data/raw/*.csv
 /data/processed/*
 !/data/processed/.gitkeep
+!/data/processed/*.csv
 /output/*
 !/output/.gitkeep
+!/output/*.csv
 
 # Archivos del sistema
 .DS_Store
