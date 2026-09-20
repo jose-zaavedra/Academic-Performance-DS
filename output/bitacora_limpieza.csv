@@ -1,0 +1,53 @@
+n_paso,paso,columna,revision_o_problema,registros_afectados,decision,fundamento,filas_despues
+3.1,Revisiones previas,student_id,Valores faltantes,0,No imputar,Se conservan las filas y se documentan los faltantes.,8000
+3.1,Revisiones previas,age,Valores faltantes,0,No imputar,Se conservan las filas y se documentan los faltantes.,8000
+3.1,Revisiones previas,gender,Valores faltantes,0,No imputar,Se conservan las filas y se documentan los faltantes.,8000
+3.1,Revisiones previas,gaming_hours,Valores faltantes,0,No imputar,Se conservan las filas y se documentan los faltantes.,8000
+3.1,Revisiones previas,study_hours,Valores faltantes,0,No imputar,Se conservan las filas y se documentan los faltantes.,8000
+3.1,Revisiones previas,sleep_hours,Valores faltantes,0,No imputar,Se conservan las filas y se documentan los faltantes.,8000
+3.1,Revisiones previas,attendance,Valores faltantes,0,No imputar,Se conservan las filas y se documentan los faltantes.,8000
+3.1,Revisiones previas,gaming_genre,Valores faltantes,0,No imputar,Se conservan las filas y se documentan los faltantes.,8000
+3.1,Revisiones previas,social_activity,Valores faltantes,0,No imputar,Se conservan las filas y se documentan los faltantes.,8000
+3.1,Revisiones previas,device_usage,Valores faltantes,0,No imputar,Se conservan las filas y se documentan los faltantes.,8000
+3.1,Revisiones previas,reaction_time_ms,Valores faltantes,0,No imputar,Se conservan las filas y se documentan los faltantes.,8000
+3.1,Revisiones previas,addiction_score,Valores faltantes,0,No imputar,Se conservan las filas y se documentan los faltantes.,8000
+3.1,Revisiones previas,stress_level,Valores faltantes,0,No imputar,Se conservan las filas y se documentan los faltantes.,8000
+3.1,Revisiones previas,grades,Valores faltantes,0,No imputar,Se conservan las filas y se documentan los faltantes.,8000
+3.1,Revisiones previas,todas,Filas duplicadas completas,0,No eliminar filas,La consigna exige conservar las 8000 filas.,8000
+3.1,Revisiones previas,todas excepto student_id,Filas duplicadas ignorando student_id,0,No eliminar filas,La revisión informa calidad sin alterar el dataset.,8000
+3.1,Revisiones previas,student_id,"Unicidad: notnull, nunique y is_unique",0,Conservar para revisar y descartar después,notnull=8000; nunique=8000; is_unique=True.,8000
+3.1,Revisiones previas,nombres de columnas,Nombres de columna duplicados,0,No modificar,Los nombres deben ser únicos.,8000
+3.1,Revisiones previas,columnas,Columnas con contenido idéntico,0,No modificar,Se evita conservar información repetida sin cambiar el original.,8000
+3.1,Revisiones previas,gender,"Categorías, espacios sobrantes y variantes de mayúsculas",0,"Valores únicos: ['Female', 'Male', 'Other']",Se documentan las categorías antes de normalizar tipos.,8000
+3.1,Revisiones previas,gaming_genre,"Categorías, espacios sobrantes y variantes de mayúsculas",0,"Valores únicos: ['Casual', 'FPS', 'RPG']",Se documentan las categorías antes de normalizar tipos.,8000
+3.1,Revisiones previas,stress_level,"Categorías, espacios sobrantes y variantes de mayúsculas",0,"Valores únicos: ['High', 'Low', 'Medium']",Se documentan las categorías antes de normalizar tipos.,8000
+3.1,Revisiones previas,student_id,Rango y atípicos por regla 1.5*IQR,0,mín=1; máx=8000,Se informa el rango y no se eliminan atípicos.,8000
+3.1,Revisiones previas,age,Rango y atípicos por regla 1.5*IQR,0,mín=16; máx=24,Se informa el rango y no se eliminan atípicos.,8000
+3.1,Revisiones previas,gaming_hours,Rango y atípicos por regla 1.5*IQR,0,mín=0.0; máx=8.0,Se informa el rango y no se eliminan atípicos.,8000
+3.1,Revisiones previas,study_hours,Rango y atípicos por regla 1.5*IQR,0,mín=1.0; máx=10.0,Se informa el rango y no se eliminan atípicos.,8000
+3.1,Revisiones previas,sleep_hours,Rango y atípicos por regla 1.5*IQR,0,mín=4.0; máx=9.0,Se informa el rango y no se eliminan atípicos.,8000
+3.1,Revisiones previas,attendance,Rango y atípicos por regla 1.5*IQR,0,mín=60.0; máx=100.0,Se informa el rango y no se eliminan atípicos.,8000
+3.1,Revisiones previas,social_activity,Rango y atípicos por regla 1.5*IQR,0,mín=0.0; máx=5.0,Se informa el rango y no se eliminan atípicos.,8000
+3.1,Revisiones previas,device_usage,Rango y atípicos por regla 1.5*IQR,0,mín=1.1; máx=13.95,Se informa el rango y no se eliminan atípicos.,8000
+3.1,Revisiones previas,reaction_time_ms,Rango y atípicos por regla 1.5*IQR,0,mín=183.26; máx=347.87,Se informa el rango y no se eliminan atípicos.,8000
+3.1,Revisiones previas,addiction_score,Rango y atípicos por regla 1.5*IQR,0,mín=-4.51; máx=23.16,Se informa el rango y no se eliminan atípicos.,8000
+3.1,Revisiones previas,grades,Rango y atípicos por regla 1.5*IQR,0,mín=0.0; máx=118.63293578685628,Se informa el rango y no se eliminan atípicos.,8000
+3.1,Revisiones previas,consistencia,device_usage >= gaming_hours,0,Revisar sin eliminar filas,Las reglas de consistencia se informan antes de transformar.,8000
+3.1,Revisiones previas,consistencia,gaming_hours + study_hours + sleep_hours <= 24,0,Revisar sin eliminar filas,Las reglas de consistencia se informan antes de transformar.,8000
+3.1,Revisiones previas,consistencia,"attendance fuera de [0, 100]",0,Revisar sin eliminar filas,Las reglas de consistencia se informan antes de transformar.,8000
+3.1,Revisiones previas,consistencia,grades negativas,0,Revisar sin eliminar filas,Las reglas de consistencia se informan antes de transformar.,8000
+3.2,Indicador de registros ajustados,grades,Más de dos decimales antes del redondeo,1671,Crear flag_ajustado,La relación con ajustes de horas es una hipótesis y se conserva como indicador.,8000
+3.3,Limpieza de grades,grades,Valores superiores al tope de notas,134,Aplicar clip superior en 100 y conservar grades_original,"Conserva las 8000 filas, sigue la escala 0-100 asumida y permite análisis de sensibilidad posterior.",8000
+3.4,Tipos y categorías,gender,Espacios externos,0,Aplicar str.strip(),Normaliza categorías sin cambiar su significado.,8000
+3.4,Tipos y categorías,stress_level,Espacios externos,0,Aplicar str.strip(),Normaliza categorías sin cambiar su significado.,8000
+3.4,Tipos y categorías,gaming_genre,Espacios externos,0,Aplicar str.strip(),Normaliza categorías sin cambiar su significado.,8000
+3.4,Tipos y categorías,age,Verificación de tipo entero,0,Conservar tipo entero si se cumple,La edad está definida como años enteros.,8000
+3.5,Variables derivadas,uso_no_gaming,device_usage >= gaming_hours,0,Crear diferencia solo si la consistencia se mantiene,Supuesto: device_usage incluye gaming_hours.,8000
+3.5,Variables derivadas,gaming_cat,Cortes por terciles,3,"Cortes: [0.0, 2.8, 5.46, 8.0]","Agrupa en Bajo, Medio y Alto para comparación descriptiva; los cortes fijos 2 y 5 horas son una alternativa.",8000
+3.6,Redondeo,"gaming_hours, study_hours, sleep_hours, attendance, social_activity, device_usage, reaction_time_ms, addiction_score, grades, uso_no_gaming",Valores float con más de dos decimales,1671,Redondear a dos decimales,Facilita lectura y mantiene grades_original sin alterar.,8000
+3.7,Descarte de columnas,reaction_time_ms,Correlación con gaming_hours,0,r=-0.9389,Redundante con gaming_hours y fuera del objetivo definido.,8000
+3.7,Descarte de columnas,addiction_score,Valores negativos y correlación con gaming_hours,107,r=0.9086; negativos=107,Escala no documentada; los negativos son anomalías del original y no se corrigen porque la columna se descarta.,8000
+3.7,Descarte de columnas,student_id,Columna fuera del dataset analítico final,8000,Descartar,Identificador único sin información analítica; coincide con número de fila + 1.,8000
+3.7,Descarte de columnas,reaction_time_ms,Columna fuera del dataset analítico final,8000,Descartar,Redundante con gaming_hours y no vinculada al objetivo del proyecto.,8000
+3.7,Descarte de columnas,gaming_genre,Columna fuera del dataset analítico final,8000,Descartar,"Fuera del alcance: el análisis se centra en horas de juego, no tipo de juego.",8000
+3.7,Descarte de columnas,addiction_score,Columna fuera del dataset analítico final,8000,Descartar,"Escala no documentada, valores negativos y casi redundante con gaming_hours.",8000

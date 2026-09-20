@@ -10,13 +10,7 @@ __pycache__/
 .env
 .vscode/
 
-# Ignorar datos y resultados generados, excepto archivos CSV y .gitkeep
-/data/raw/*
-!/data/raw/.gitkeep
-!/data/raw/*.csv
-/data/processed/*
-!/data/processed/.gitkeep
-!/data/processed/*.csv
+# Los datos originales y procesados del proyecto se versionan
 /output/*
 !/output/.gitkeep
 !/output/*.csv

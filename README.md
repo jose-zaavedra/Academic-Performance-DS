@@ -9,7 +9,7 @@ academic-performance/
 ├── data/
 │   ├── raw/          # Datos originales, sin modificaciones
 │   └── processed/    # Datos limpios y transformados
-├── notebooks/        # Exploracion y analisis reproducible
+├── notebooks/        # Notebook unico de exploracion y transformacion
 ├── output/           # Graficos, tablas y resultados exportados
 ├── src/              # Codigo reutilizable del proyecto
 ├── .gitignore
@@ -48,7 +48,7 @@ academic-performance/
    jupyter lab
    ```
 
-4. Ejecutar los notebooks en orden. Guardar los datos originales en `data/raw/`, los datos transformados en `data/processed/` y los resultados en `output/`.
+4. Ejecutar `notebooks/fase1_gaming_rendimiento.ipynb` desde la carpeta `notebooks/`. El notebook lee el original desde `data/raw/`, escribe el dataset limpio en `data/processed/` y la bitacora en `output/`.
 
 ## Versionado y entrega
 
@@ -63,4 +63,4 @@ git remote add origin https://github.com/jose-zaavedra/Academic-Performance-DS.g
 git push -u origin main
 ```
 
-No se versionan entornos virtuales, caches ni archivos de datos o resultados generados. Los archivos de datos reales deben compartirse por el canal indicado por la catedra si no corresponde almacenarlos en Git.
+No se versionan entornos virtuales, caches ni archivos del sistema. Los archivos de `data/raw/`, `data/processed/` y las salidas CSV se versionan para reproducir la entrega.
