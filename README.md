@@ -69,7 +69,14 @@ Contiene funciones y módulos Python reutilizables. Actualmente incluye la inici
 
 ## Reproducción
 
-1. Crear y activar un entorno virtual:
+### Compatibilidad
+
+- Python mínimo recomendado: **3.9**.
+- Probado de extremo a extremo en Python **3.13** sobre Windows.
+- El procedimiento usa herramientas multiplataforma: `venv`, `pip` y Jupyter.
+- No se garantiza compatibilidad con Python 3.8 o anteriores porque las versiones actuales de pandas, numpy y matplotlib requieren Python más reciente.
+
+1. Desde la raíz del repositorio, crear y activar un entorno virtual:
 
    En Windows PowerShell:
 
@@ -113,6 +120,8 @@ Contiene funciones y módulos Python reutilizables. Actualmente incluye la inici
    ```
 
 5. Abrir `fase1_gaming_rendimiento.ipynb` y elegir **Restart & Run All**. El notebook lee `../data/raw/Gaming_Academic_Performance_updated.csv`, genera `../data/processed/gaming_academic_clean.csv` y escribe `../output/bitacora_limpieza.csv`.
+
+El resultado esperado es un dataset limpio de `8000 x 15` y una bitácora de limpieza con `52 x 8`.
 
 ### Ejecución automática sin abrir Jupyter
 
