@@ -67,7 +67,7 @@ Contiene funciones y módulos Python reutilizables. Actualmente incluye la inici
 - `requirements.txt`: lista las dependencias Python.
 - `README.md`: documenta la organización y reproducción del proyecto.
 
-## Reproduccion
+## Reproducción
 
 1. Crear y activar un entorno virtual:
 
@@ -92,13 +92,47 @@ Contiene funciones y módulos Python reutilizables. Actualmente incluye la inici
    pip install -r requirements.txt
    ```
 
-3. Abrir Jupyter Lab:
+3. Entrar en la carpeta de notebooks. Es necesario hacerlo porque el notebook usa rutas relativas como `../data/raw/`:
+
+   En Windows PowerShell:
+
+   ```powershell
+   Set-Location notebooks
+   ```
+
+   En macOS/Linux:
+
+   ```bash
+   cd notebooks
+   ```
+
+4. Abrir Jupyter Lab:
 
    ```bash
    jupyter lab
    ```
 
-4. Abrir `notebooks/fase1_gaming_rendimiento.ipynb` y ejecutarlo desde la carpeta `notebooks/`. El notebook lee el original desde `data/raw/`, escribe el dataset limpio en `data/processed/` y la bitacora en `output/`.
+5. Abrir `fase1_gaming_rendimiento.ipynb` y elegir **Restart & Run All**. El notebook lee `../data/raw/Gaming_Academic_Performance_updated.csv`, genera `../data/processed/gaming_academic_clean.csv` y escribe `../output/bitacora_limpieza.csv`.
+
+### Ejecución automática sin abrir Jupyter
+
+Desde la raíz del repositorio:
+
+En Windows PowerShell:
+
+```powershell
+Set-Location notebooks
+..\.venv\Scripts\python.exe -m jupyter nbconvert --to notebook --execute --inplace --ExecutePreprocessor.timeout=180 fase1_gaming_rendimiento.ipynb
+```
+
+En macOS/Linux:
+
+```bash
+cd notebooks
+../.venv/bin/python -m jupyter nbconvert --to notebook --execute --inplace --ExecutePreprocessor.timeout=180 fase1_gaming_rendimiento.ipynb
+```
+
+Al finalizar deben existir o actualizarse `data/processed/gaming_academic_clean.csv` y `output/bitacora_limpieza.csv`.
 
 ## Versionado y entrega
 
