@@ -45,13 +45,27 @@ Contiene los notebooks Jupyter del proyecto. El notebook principal es:
 fase1_gaming_rendimiento.ipynb
 ```
 
-Se ejecuta desde esta carpeta y utiliza rutas relativas hacia `../data/raw/`, `../data/processed/` y `../output/`.
+La Fase 2 se encuentra en un notebook independiente:
+
+```text
+fase2_gaming_rendimiento.ipynb
+```
+
+Ambos notebooks detectan la raíz del repositorio y pueden ejecutarse desde la raíz
+o desde una sesión de Jupyter abierta en `notebooks/`. La Fase 1 utiliza el dataset
+original `data/raw/Gaming_Academic_Performance_updated.csv` para producir el dataset
+limpio; la Fase 2 utiliza `data/processed/gaming_academic_clean.csv` sin volver a
+limpiarlo.
 
 ### `output/`
 
 Contiene resultados generados por los notebooks, por ejemplo:
 
 - `bitacora_limpieza.csv`: registro de las decisiones de limpieza.
+- `fase2_gaming_rendimiento.html`: exportación HTML del notebook de Fase 2.
+- `fase2_tabla_resumen_contrastes.csv`: tabla reproducible de contrastes.
+- `fase2_posthoc_C2.csv`: comparaciones post hoc del contraste C2.
+- `fase2_intervalos_bootstrap.csv`: intervalos bootstrap y comparación con IC clásicos.
 - Gráficos y tablas exportadas.
 - Informes de entrega en `.pdf`, `.doc` o `.docx`.
 
@@ -122,6 +136,31 @@ Contiene funciones y módulos Python reutilizables. Actualmente incluye la inici
 5. Abrir `fase1_gaming_rendimiento.ipynb` y elegir **Restart & Run All**. El notebook lee `../data/raw/Gaming_Academic_Performance_updated.csv`, genera `../data/processed/gaming_academic_clean.csv` y escribe `../output/bitacora_limpieza.csv`.
 
 El resultado esperado es un dataset limpio de `8000 x 15` y una bitácora de limpieza con `52 x 8`.
+
+### Reproducción de la Fase 2
+
+Abrir `notebooks/fase2_gaming_rendimiento.ipynb` y elegir **Restart & Run All**.
+El notebook lee `data/processed/gaming_academic_clean.csv`, ejecuta los contrastes
+unificados, diagnósticos de supuestos, corrección BH, análisis de sensibilidad y
+bootstrap, y guarda las exportaciones directamente en `output/`. También puede
+ejecutarse automáticamente desde la raíz:
+
+En Windows PowerShell:
+
+```powershell
+.\.venv\Scripts\python.exe -m jupyter nbconvert --to notebook --execute --inplace --ExecutePreprocessor.timeout=300 notebooks\fase2_gaming_rendimiento.ipynb
+.\.venv\Scripts\python.exe -m jupyter nbconvert --to html --output-dir output notebooks\fase2_gaming_rendimiento.ipynb
+```
+
+En macOS/Linux:
+
+```bash
+./.venv/bin/python -m jupyter nbconvert --to notebook --execute --inplace --ExecutePreprocessor.timeout=300 notebooks/fase2_gaming_rendimiento.ipynb
+./.venv/bin/python -m jupyter nbconvert --to html --output-dir output notebooks/fase2_gaming_rendimiento.ipynb
+```
+
+La instalación conserva las dependencias existentes y agrega `scipy`, `statsmodels`
+y `patsy`, requeridas por los contrastes y modelos de la Fase 2.
 
 ### Ejecución automática sin abrir Jupyter
 

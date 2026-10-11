@@ -1,0 +1,4 @@
+﻿Estimación,Estimador,IC 95 % bootstrap,IC 95 % clásico,Comparación
+"Pearson r(gaming_hours, grades)",-0.5582301767862818,[-0.573; -0.543],[-0.573; -0.543],Bootstrap percentil de Pearson frente al IC de Fisher.
+Media grades (Alto) − media grades (Bajo),-28.52114349915798,[-29.566; -27.489],[-29.550; -27.492],Diferencia en puntos de nota; criterio práctico predefinido: 3 puntos; IC clásico de Welch.
+"r(gaming, grades) − r(gaming, grades_original)",-0.001039025193913079,[-0.002; -0.000],No aplica directamente,Bootstrap pareado de correlaciones dependientes; no constituye una prueba formal de equivalencia.

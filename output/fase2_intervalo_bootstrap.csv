@@ -1,0 +1,2 @@
+﻿Estimación,Estimador,IC 95 % bootstrap,IC 95 % clásico (Fisher),Comparación
+"Pearson r(gaming_hours, grades)",-0.5582301767862822,[-0.573; -0.543],[-0.573; -0.543],Los intervalos se comparan como estimaciones de incertidumbre; no se cuenta como prueba de hipótesis.
