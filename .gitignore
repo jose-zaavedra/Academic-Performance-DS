@@ -18,6 +18,7 @@ fase2-data/**
 !/output/*.doc
 !/output/*.docx
 !/output/*.html
+!/output/*.joblib
 
 # Archivos del sistema
 .DS_Store

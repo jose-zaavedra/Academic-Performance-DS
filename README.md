@@ -57,6 +57,16 @@ original `data/raw/Gaming_Academic_Performance_updated.csv` para producir el dat
 limpio; la Fase 2 utiliza `data/processed/gaming_academic_clean.csv` sin volver a
 limpiarlo.
 
+La Fase 3 se encuentra en `notebooks/fase3_modelado_rendimiento.ipynb`. Compara
+una línea base y tres familias de regresión para predecir `grades` con cinco
+predictores definidos a priori. Genera el HTML ejecutado, tablas de resultados y
+el modelo ganador en `output/`. El script `src/infer_fase3.py` permite aplicar el
+modelo guardado a un CSV nuevo:
+
+```powershell
+.\.venv\Scripts\python.exe src\infer_fase3.py datos_nuevos.csv output\predicciones.csv
+```
+
 ### `output/`
 
 Contiene resultados generados por los notebooks, por ejemplo:
