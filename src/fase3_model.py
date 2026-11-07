@@ -24,8 +24,26 @@ FEATURES = [
     "study_hours",
     "sleep_hours",
     "attendance",
-    "social_activity",
+    "uso_no_gaming",
 ]
+FEATURE_SET_CANDIDATES = {
+    "Fase 2 + uso_no_gaming": FEATURES,
+    "Fase 3 + social_activity": [
+        "gaming_hours",
+        "study_hours",
+        "sleep_hours",
+        "attendance",
+        "social_activity",
+    ],
+    "Ambos complementarios": [
+        "gaming_hours",
+        "study_hours",
+        "sleep_hours",
+        "attendance",
+        "uso_no_gaming",
+        "social_activity",
+    ],
+}
 RANDOM_STATE = 42
 
 
@@ -99,6 +117,32 @@ def cross_validate_models(
                 "RMSE CV std": float(scores["test_rmse"].std()),
             }
         )
+    return pd.DataFrame(rows).sort_values("RMSE CV").reset_index(drop=True)
+
+
+def compare_feature_sets(
+    df: pd.DataFrame, y: pd.Series, cv: KFold
+) -> pd.DataFrame:
+    """Compare documented predictor alternatives using identical CV folds."""
+    rows: list[dict[str, float | str]] = []
+    scoring = {
+        "rmse": "neg_root_mean_squared_error",
+        "mae": "neg_mean_absolute_error",
+        "r2": "r2",
+    }
+    for feature_set_name, features in FEATURE_SET_CANDIDATES.items():
+        X = df[features]
+        for model_name, model in build_models().items():
+            scores = cross_validate(model, X, y, cv=cv, scoring=scoring, n_jobs=1)
+            rows.append(
+                {
+                    "Conjunto de predictores": feature_set_name,
+                    "Modelo": model_name,
+                    "RMSE CV": float(-scores["test_rmse"].mean()),
+                    "MAE CV": float(-scores["test_mae"].mean()),
+                    "R2 CV": float(scores["test_r2"].mean()),
+                }
+            )
     return pd.DataFrame(rows).sort_values("RMSE CV").reset_index(drop=True)
 
 

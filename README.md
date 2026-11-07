@@ -67,6 +67,13 @@ modelo guardado a un CSV nuevo:
 .\.venv\Scripts\python.exe src\infer_fase3.py datos_nuevos.csv output\predicciones.csv
 ```
 
+La selección de predictores se documenta y compara en
+`output/fase3_comparacion_predictores.csv`. Se evalúan, sin usar el conjunto de
+prueba, la combinación heredada de Fase 2 con `uso_no_gaming`, la alternativa
+inicial de Fase 3 con `social_activity` y una combinación con ambos predictores.
+La rama revisada conserva `uso_no_gaming` porque obtuvo el menor RMSE promedio de
+validación cruzada; la diferencia fue pequeña y no se interpreta como causalidad.
+
 ### `output/`
 
 Contiene resultados generados por los notebooks, por ejemplo:
