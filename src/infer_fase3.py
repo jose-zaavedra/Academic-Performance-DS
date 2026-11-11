@@ -13,7 +13,9 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("input_csv", type=Path)
     parser.add_argument("output_csv", type=Path)
-    parser.add_argument("--model", type=Path, default=Path("output/fase3_modelo_ganador.joblib"))
+    parser.add_argument(
+        "--model", type=Path, default=Path("output/fase3/fase3_modelo_ganador.joblib")
+    )
     args = parser.parse_args()
 
     bundle = joblib.load(args.model)

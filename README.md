@@ -10,7 +10,13 @@ academic-performance/
 │   ├── raw/          # Dataset original, sin modificaciones
 │   └── processed/    # Datasets limpios y transformados
 ├── notebooks/        # Notebooks de carga, limpieza y analisis
-├── output/           # Informes, graficos, tablas y bitacoras
+├── output/
+│   ├── fase1/        # Resultados e informe de la Fase 1
+│   ├── fase2/        # Resultados e informe de la Fase 2
+│   ├── fase3/        # Resultados, informe y presentacion de la Fase 3
+│   ├── integrador/   # Informe integrador de las tres fases
+│   └── entrega_final/ # ZIP final de entrega
+├── docs/             # Guia y enlace del repositorio
 ├── src/              # Codigo Python reutilizable
 ├── .gitignore
 ├── requirements.txt
@@ -60,11 +66,11 @@ limpiarlo.
 La Fase 3 se encuentra en `notebooks/fase3_modelado_rendimiento.ipynb`. Compara
 una línea base y tres familias de regresión para predecir `grades` con cinco
 predictores definidos a priori. Genera el HTML ejecutado, tablas de resultados y
-el modelo ganador en `output/`. El script `src/infer_fase3.py` permite aplicar el
+el modelo ganador en `output/fase3/`. El script `src/infer_fase3.py` permite aplicar el
 modelo guardado a un CSV nuevo:
 
 ```powershell
-.\.venv\Scripts\python.exe src\infer_fase3.py datos_nuevos.csv output\predicciones.csv
+.\.venv\Scripts\python.exe src\infer_fase3.py datos_nuevos.csv output\fase3\predicciones.csv
 ```
 
 La selección de predictores se documenta y compara en
@@ -76,17 +82,15 @@ validación cruzada; la diferencia fue pequeña y no se interpreta como causalid
 
 ### `output/`
 
-Contiene resultados generados por los notebooks, por ejemplo:
+Los resultados están separados por fase para facilitar la revisión y la entrega:
 
-- `bitacora_limpieza.csv`: registro de las decisiones de limpieza.
-- `fase2_gaming_rendimiento.html`: exportación HTML del notebook de Fase 2.
-- `fase2_tabla_resumen_contrastes.csv`: tabla reproducible de contrastes.
-- `fase2_posthoc_C2.csv`: comparaciones post hoc del contraste C2.
-- `fase2_intervalos_bootstrap.csv`: intervalos bootstrap y comparación con IC clásicos.
-- Gráficos y tablas exportadas.
-- Informes de entrega en `.pdf`, `.doc` o `.docx`.
+- `fase1/`: bitácora de limpieza e informe de la Fase 1.
+- `fase2/`: HTML, tablas estadísticas e informe de la Fase 2.
+- `fase3/`: HTML, modelo, métricas, diagnóstico, informe y presentación de la Fase 3.
+- `integrador/`: informe integrador de las tres fases.
+- `entrega_final/`: único ZIP vigente con los archivos principales de entrega.
 
-Los archivos guardados aquí son entregables o resultados, no datos originales.
+Los archivos guardados aquí son resultados reproducibles o entregables, no datos originales.
 
 ### `src/`
 
@@ -150,7 +154,7 @@ Contiene funciones y módulos Python reutilizables. Actualmente incluye la inici
    jupyter lab
    ```
 
-5. Abrir `fase1_gaming_rendimiento.ipynb` y elegir **Restart & Run All**. El notebook lee `../data/raw/Gaming_Academic_Performance_updated.csv`, genera `../data/processed/gaming_academic_clean.csv` y escribe `../output/bitacora_limpieza.csv`.
+5. Abrir `fase1_gaming_rendimiento.ipynb` y elegir **Restart & Run All**. El notebook lee `../data/raw/Gaming_Academic_Performance_updated.csv`, genera `../data/processed/gaming_academic_clean.csv` y escribe `../output/fase1/bitacora_limpieza.csv`.
 
 El resultado esperado es un dataset limpio de `8000 x 15` y una bitácora de limpieza con `52 x 8`.
 
@@ -159,7 +163,7 @@ El resultado esperado es un dataset limpio de `8000 x 15` y una bitácora de lim
 Abrir `notebooks/fase2_gaming_rendimiento.ipynb` y elegir **Restart & Run All**.
 El notebook lee `data/processed/gaming_academic_clean.csv`, ejecuta los contrastes
 unificados, diagnósticos de supuestos, corrección BH, análisis de sensibilidad y
-bootstrap, y guarda las exportaciones directamente en `output/`. También puede
+bootstrap, y guarda las exportaciones directamente en `output/fase2/`. También puede
 ejecutarse automáticamente desde la raíz:
 
 En Windows PowerShell:
@@ -197,19 +201,18 @@ cd notebooks
 ../.venv/bin/python -m jupyter nbconvert --to notebook --execute --inplace --ExecutePreprocessor.timeout=180 fase1_gaming_rendimiento.ipynb
 ```
 
-Al finalizar deben existir o actualizarse `data/processed/gaming_academic_clean.csv` y `output/bitacora_limpieza.csv`.
+Al finalizar deben existir o actualizarse `data/processed/gaming_academic_clean.csv` y `output/fase1/bitacora_limpieza.csv`.
 
-## Versionado y entrega
+## Entregables finales
 
-El repositorio se comparte con la catedra mediante GitHub:
+La guía de la cátedra solicita un informe de Fase 3 de hasta 15 páginas, el
+notebook ejecutado con su HTML, el modelo serializado, el script de inferencia,
+el informe integrador de hasta 30 páginas y un repositorio ordenado. Estos
+materiales se encuentran en `output/fase3/`, `output/integrador/` y
+`output/entrega_final/`.
 
-```bash
-git init
-git add .
-git commit -m "Inicializa estructura del proyecto"
-git branch -M main
-git remote add origin https://github.com/jose-zaavedra/Academic-Performance-DS.git
-git push -u origin main
-```
+El enlace oficial del repositorio está en `docs/GitHub.txt`.
 
-No se versionan entornos virtuales, caches ni archivos del sistema. Los archivos de `data/raw/`, `data/processed/` y las salidas CSV, PDF y Word se versionan para reproducir y entregar el proyecto.
+No se versionan entornos virtuales, caches ni archivos del sistema. Los datos
+originales, procesados, resultados y documentos necesarios para reproducir o
+entregar el proyecto sí se conservan en sus carpetas correspondientes.

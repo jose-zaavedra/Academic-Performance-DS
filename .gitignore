@@ -10,16 +10,6 @@ fase2-data/**
 .env
 .vscode/
 
-# Los datos originales y procesados del proyecto se versionan
-/output/*
-!/output/.gitkeep
-!/output/*.csv
-!/output/*.pdf
-!/output/*.doc
-!/output/*.docx
-!/output/*.html
-!/output/*.joblib
-
 # Archivos del sistema
 .DS_Store
 Thumbs.db
