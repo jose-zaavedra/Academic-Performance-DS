@@ -183,6 +183,47 @@ En macOS/Linux:
 La instalación conserva las dependencias existentes y agrega `scipy`, `statsmodels`
 y `patsy`, requeridas por los contrastes y modelos de la Fase 2.
 
+### Reproducción de la Fase 3
+
+La Fase 3 utiliza `data/processed/gaming_academic_clean.csv` para predecir la
+variable `grades`. El notebook compara `DummyRegressor`, regresión lineal,
+Random Forest y KNN mediante validación cruzada de cinco particiones. La semilla
+de reproducibilidad es `42`, la división es de 80 % para entrenamiento y 20 %
+para prueba, y el conjunto de prueba se mantiene separado durante la selección
+y el ajuste.
+
+Para ejecutar el notebook completo desde la raíz del repositorio:
+
+En Windows PowerShell:
+
+```powershell
+.\.venv\Scripts\python.exe -m jupyter nbconvert --to notebook --execute --inplace --ExecutePreprocessor.timeout=300 notebooks\fase3_modelado_rendimiento.ipynb
+.\.venv\Scripts\python.exe -m jupyter nbconvert --to html --output-dir output\fase3 notebooks\fase3_modelado_rendimiento.ipynb
+```
+
+En macOS/Linux:
+
+```bash
+./.venv/bin/python -m jupyter nbconvert --to notebook --execute --inplace --ExecutePreprocessor.timeout=300 notebooks/fase3_modelado_rendimiento.ipynb
+./.venv/bin/python -m jupyter nbconvert --to html --output-dir output/fase3 notebooks/fase3_modelado_rendimiento.ipynb
+```
+
+El notebook genera en `output/fase3/` las métricas de prueba, la comparación de
+predictores, el diagnóstico de residuos, la importancia de variables, el HTML
+ejecutado y el modelo ganador `fase3_modelo_ganador.joblib`. El módulo
+`src/fase3_model.py` contiene la lógica reutilizable del entrenamiento.
+
+Para aplicar el modelo a un archivo CSV nuevo, el archivo debe incluir las cinco
+columnas predictoras finales: `gaming_hours`, `study_hours`, `sleep_hours`,
+`attendance` y `uso_no_gaming`. El comando es:
+
+```powershell
+.\.venv\Scripts\python.exe src\infer_fase3.py datos_nuevos.csv output\fase3\predicciones.csv
+```
+
+El script conserva las columnas originales y agrega `grades_predicted`. También
+se puede indicar otro archivo de modelo con `--model`.
+
 ### Ejecución automática sin abrir Jupyter
 
 Desde la raíz del repositorio:
