@@ -2,6 +2,57 @@
 
 Proyecto de Data Science para analizar el rendimiento académico.
 
+## Problema
+
+El proyecto estudia cómo se relacionan las horas de videojuegos, el estudio, el sueño
+y otros hábitos estudiantiles con el rendimiento académico medido por `grades`.
+El objetivo principal es identificar patrones descriptivos e inferenciales y
+construir un modelo que permita estimar calificaciones a partir de variables
+disponibles antes de la evaluación.
+
+## Objetivos
+
+- Limpiar y documentar un conjunto de datos transversal sin alterar su estructura
+  original ni introducir información derivada de la variable objetivo.
+- Analizar distribuciones, asociaciones y diferencias relevantes en las calificaciones.
+- Formular y evaluar hipótesis sobre el rendimiento académico con pruebas estadísticas
+  apropiadas y controles de supuestos.
+- Comparar una línea base con tres familias predictivas bajo separación entre
+  entrenamiento, validación y prueba.
+- Comunicar resultados, límites, sesgos posibles y consideraciones éticas.
+
+## Datos y fuente
+
+La fuente es el dataset público **Gaming vs Academic Performance**, publicado por
+`aiexplorer77` en Kaggle:
+
+<https://www.kaggle.com/datasets/aiexplorer77/gaming-vs-academic-performance>
+
+Contiene 8.000 registros y variables relacionadas con videojuegos, estudio, sueño,
+actividad social, asistencia y calificaciones. No contiene identificadores personales,
+universidades, carreras ni datos restrictivos. El archivo original versionado es
+`data/raw/Gaming_Academic_Performance_updated.csv`; la versión limpia generada por
+Fase 1 es `data/processed/gaming_academic_clean.csv`.
+
+## Tecnologías
+
+- Python 3.13.5
+- pandas y NumPy para procesamiento y análisis
+- matplotlib y Jupyter para visualización y notebooks
+- scipy y statsmodels para análisis inferencial
+- scikit-learn y joblib para modelado y serialización
+- Git y GitHub para control de versiones y entrega
+
+## Síntesis de resultados
+
+La Fase 1 produjo un dataset limpio de 8.000 filas y 15 columnas, sin faltantes ni
+duplicados. La Fase 2 encontró evidencia estadística no uniforme entre las hipótesis
+evaluadas y documentó supuestos, sensibilidad y límites. En la Fase 3, el modelo
+Random Forest fue el ganador en el conjunto de prueba: RMSE 6,0012, MAE 4,6086,
+MAPE 8,9639 % y R² 0,9267. Su desempeño es muy superior al DummyRegressor
+(RMSE de validación 22,2739), pero no debe interpretarse como causalidad ni como
+garantía de generalización a otros contextos estudiantiles.
+
 ## Estructura del proyecto
 
 ```text
@@ -15,6 +66,7 @@ academic-performance/
 │   ├── fase2/        # Resultados e informe de la Fase 2
 │   ├── fase3/        # Resultados, informe y presentacion de la Fase 3
 │   ├── integrador/   # Informe integrador de las tres fases
+│   ├── informe_final/# Informe final exigido, de hasta 5 páginas
 │   └── entrega_final/ # ZIP final de entrega
 ├── docs/             # Guia y enlace del repositorio
 ├── src/              # Codigo Python reutilizable
@@ -170,14 +222,14 @@ En Windows PowerShell:
 
 ```powershell
 .\.venv\Scripts\python.exe -m jupyter nbconvert --to notebook --execute --inplace --ExecutePreprocessor.timeout=300 notebooks\fase2_gaming_rendimiento.ipynb
-.\.venv\Scripts\python.exe -m jupyter nbconvert --to html --output-dir output notebooks\fase2_gaming_rendimiento.ipynb
+.\.venv\Scripts\python.exe -m jupyter nbconvert --to html --output-dir output\fase2 notebooks\fase2_gaming_rendimiento.ipynb
 ```
 
 En macOS/Linux:
 
 ```bash
 ./.venv/bin/python -m jupyter nbconvert --to notebook --execute --inplace --ExecutePreprocessor.timeout=300 notebooks/fase2_gaming_rendimiento.ipynb
-./.venv/bin/python -m jupyter nbconvert --to html --output-dir output notebooks/fase2_gaming_rendimiento.ipynb
+./.venv/bin/python -m jupyter nbconvert --to html --output-dir output/fase2 notebooks/fase2_gaming_rendimiento.ipynb
 ```
 
 La instalación conserva las dependencias existentes y agrega `scipy`, `statsmodels`

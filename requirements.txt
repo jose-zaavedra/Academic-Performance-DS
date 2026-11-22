@@ -1,3 +1,5 @@
+# Entorno probado: Python 3.13.5
+# Semilla aleatoria documentada en el codigo de Fase 3: 42
 pandas>=2.0,<3.0
 numpy>=1.26,<3.0
 jupyter>=1.0,<2.0
@@ -7,8 +9,3 @@ statsmodels>=0.14,<1.0
 patsy>=0.5,<2.0
 scikit-learn>=1.4,<2.0
 joblib>=1.3,<2.0
-
-# Dependencias previstas para las secciones siguientes:
-# seaborn
-# scipy
-# statsmodels
