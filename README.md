@@ -62,7 +62,7 @@ academic-performance/
 │   └── processed/    # Datasets limpios y transformados
 ├── notebooks/        # Notebooks de carga, limpieza y analisis
 ├── output/
-│   ├── fase1/        # Resultados e informe de la Fase 1
+│   ├── fase1/        # HTML, bitácora e informe de la Fase 1
 │   ├── fase2/        # Resultados e informe de la Fase 2
 │   ├── fase3/        # Resultados, informe y presentacion de la Fase 3
 │   ├── integrador/   # Informe integrador de las tres fases
@@ -136,7 +136,7 @@ validación cruzada; la diferencia fue pequeña y no se interpreta como causalid
 
 Los resultados están separados por fase para facilitar la revisión y la entrega:
 
-- `fase1/`: bitácora de limpieza e informe de la Fase 1.
+- `fase1/`: notebook exportado a HTML, bitácora de limpieza e informe de la Fase 1.
 - `fase2/`: HTML, tablas estadísticas e informe de la Fase 2.
 - `fase3/`: HTML, modelo, métricas, diagnóstico, informe y presentación de la Fase 3.
 - `integrador/`: informe integrador de las tres fases.
@@ -146,7 +146,9 @@ Los archivos guardados aquí son resultados reproducibles o entregables, no dato
 
 ### `src/`
 
-Contiene funciones y módulos Python reutilizables. Actualmente incluye la inicialización del paquete; el código de análisis puede trasladarse aquí en fases posteriores.
+Contiene funciones y módulos Python reutilizables. `fase3_model.py` agrupa
+modelos, validación, selección de predictores y métricas de la Fase 3.
+`infer_fase3.py` aplica el modelo serializado a datos nuevos.
 
 ### Archivos de configuración
 
